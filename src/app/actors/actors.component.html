@@ -1,0 +1,34 @@
+
+
+<div class="row">
+    <div *ngFor="let item of actors" class="col-xl-2 col-lg-3 col-md-6 item">
+        <a [routerLink]="['/details',item.id,mediaType]">
+            <div class="my-2">
+                <img [src]=" 'https://image.tmdb.org/t/p/w500'+item.profile_path" class="w-100" />
+                <h3 class="h5 py-2">{{item.name}}</h3>
+            </div>
+        </a>
+       
+    </div>
+</div>
+
+
+<div class="row my-4">
+    <div  class="col-md-12">
+        <nav  aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item">
+                <a (click)="getPreviousPage()" class="page-link cursorPointer">Previous</a>
+              </li>
+              <li class="page-item"><a (click)="getpageNumber(1)" class="page-link cursorPointer" >1</a></li>
+              <li class="page-item"><a (click)="getpageNumber(2)" class="page-link cursorPointer" >2</a></li>
+              <li class="page-item"><a (click)="getpageNumber(3)" class="page-link cursorPointer">3</a></li>
+              <li class="page-item">
+                <a class="page-link cursorPointer" (click)="getNextPage()">Next</a>
+              </li>
+            </ul>
+          </nav>
+        
+    </div>
+
+</div>

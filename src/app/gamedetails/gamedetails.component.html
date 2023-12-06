@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-3">
+
+        <img *ngIf="itemDetails?.profile_path" [src]=" 'https://image.tmdb.org/t/p/w500'+itemDetails?.profile_path"
+            class="w-100 " />
+
+
+        <img *ngIf="itemDetails?.poster_path" [src]=" 'https://image.tmdb.org/t/p/w500'+itemDetails?.poster_path"
+            class="w-100 " />
+
+
+    </div>
+
+
+    <div class="col-md-6 d-flex align-items-center">
+
+        <div>
+
+            <h2 class="my-2">{{itemDetails?.title}} {{itemDetails?.name}}</h2>
+
+            <p class="text-muted py-2">{{itemDetails?.overview}} {{itemDetails?.biography}}</p>
+            <div *ngIf="itemDetails?.type">Type : {{itemDetails?.type}}</div>
+            <div *ngIf="itemDetails?.vote_average">vote Average : {{itemDetails?.vote_average}}</div>
+
+            <div *ngIf="itemDetails?.vote_count">vote count : {{itemDetails?.vote_count}}</div>
+
+            <div *ngIf="itemDetails?.budget">budget : {{itemDetails?.budget}}</div>
+
+
+            <div *ngIf="itemDetails?.revenue">revenue : {{itemDetails?.revenue}}</div>
+
+            <div *ngIf="itemDetails?.birthday">birthday : {{itemDetails?.birthday}}</div>
+            <div *ngIf="itemDetails?.place_of_birth">place of birth : {{itemDetails?.place_of_birth}}</div>
+            <div *ngIf="itemDetails?.known_for_department">job : {{itemDetails?.known_for_department}}</div>
+            <div *ngIf="itemDetails?.popularity"> popularity : {{itemDetails?.popularity}}</div>
+
+        </div>
+
+
+
+
+    </div>
+</div>
+
+<div class="row my-4 ">
+    <h3 *ngIf="itemDetails?.title && similar.length" class="color">Similar Movies</h3>
+    <h3 *ngIf="itemDetails?.name &&itemDetails?.vote_average && similar.length" class="color">Similar Tv</h3>
+    <div *ngFor="let item of similar" class="col-xl-2 col-lg-3 col-md-6 item">
+        <div (click)="anotherDetails(item.id,media_type)" class="my-2 position-relative cursorPointer">
+            <img [src]=" 'https://image.tmdb.org/t/p/w500'+item.poster_path" class="w-100" />
+            <h3 class="h5 py-2">{{item.title}} {{item.name}}</h3>
+            <div class="vote p-1 top-0 end-0 position-absolute">{{item.vote_average.toFixed(1)}}</div>
+        </div>
+    </div>
+</div>
